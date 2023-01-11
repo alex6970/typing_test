@@ -16,9 +16,9 @@ import random
 # tkinter
 # tkinter in OOP ?
 class GUI_window:
-    def __init__(self, master, inp_title):
+    def __init__(self, master):
         self.master = master
-        master.title(inp_title)
+        master.title("Welcome")
 
         windowWidth = 500
         windowHeight = 200
@@ -43,7 +43,8 @@ class GUI_window:
     def greet(self):
         print("Greetings!")
 
-
-root = ct.CTk()
-my_gui = GUI_window(root, "A GUI")
-root.mainloop()
+# Runs only if compiled as own script, not as module
+if __name__ == "__main__":
+    app = ct.CTk()
+    gui = GUI_window(app)
+    app.mainloop()
