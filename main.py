@@ -48,3 +48,10 @@ if __name__ == "__main__":
     app = ct.CTk()
     gui = GUI_window(app)
     app.mainloop() 
+
+
+# TODO ; 
+# DELETE VENV FROM GITHUB
+# Center frame and go on with the rest of it (geters and seter to create each frame ?)
+
+
