@@ -47,4 +47,4 @@ class GUI_window:
 if __name__ == "__main__":
     app = ct.CTk()
     gui = GUI_window(app)
-    app.mainloop()
+    app.mainloop() 
