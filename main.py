@@ -21,7 +21,6 @@ class Wind1:
 
         self.win_width = 600
         self.win_height = 400
-        # self.frame = ct.CTkFrame(root)
 
         root.geometry("{}x{}+{}+{}".format(self.win_width, self.win_height, 500, 150))
         root.resizable(width=False, height=False)
@@ -40,8 +39,11 @@ class Wind1:
 
 
     def new_window(self):
-        self.newWindow = ct.CTkToplevel(self.root)
+        # calls second window, with inheritance from first window
+        self.newWindow = ct.CTkToplevel()
         self.call_window =  Wind2(self.newWindow)
+        # hiding Wind1
+        self.root.withdraw()
         print("A FAIRE")
 
 
@@ -49,8 +51,10 @@ class Wind1:
 # Typing test page
 class Wind2(Wind1):
     def __init__(self, root):
-
+        # inheritance from first window
         Wind1.__init__(self, root)
+        
+        
         # self.root = root
 
     #     self.win_width = 600
