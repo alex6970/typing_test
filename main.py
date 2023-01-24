@@ -2,6 +2,7 @@
 # line up is for code runner extension
 
 from english_words import get_english_words_set
+from tkinter import *
 import tkinter as tk
 from tkinter import messagebox
 import customtkinter as ct
@@ -15,79 +16,54 @@ import random
 
 # App GUI
 # Home page
-class Wind1:
-    def __init__(self, root):
-        self.root = root
+class Main(ct.CTk):
+    def __init__(self):
+        super().__init__() # root is ct.CTK (arg)
+
+        self.title("FastFingas.")
 
         self.win_width = 600
         self.win_height = 400
 
-        root.geometry("{}x{}+{}+{}".format(self.win_width, self.win_height, 500, 150))
-        root.resizable(width=False, height=False)
+        self.geometry("{}x{}+{}+{}".format(self.win_width, self.win_height, 500, 150))
+        self.resizable(width=False, height=False)
 
-        self.display_widgets()
+        self.home()
 
-    def display_widgets(self):
-        self.label = ct.CTkLabel(self.root, text="This is our first GUI!")
+
+    def home(self):
+
+        self.main_frame = ct.CTkFrame(self, bg_color='white', corner_radius=10)
+        self.main_frame.pack()
+
+        self.label = ct.CTkLabel(self.main_frame, text="This is our first GUI!")
         self.label.pack()
 
-        self.close_button = ct.CTkButton(self.root, text="Start", command=self.new_window)
-        self.close_button.pack()
-
-        self.new_window_button = ct.CTkButton(self.root, text="Close", command=self.root.quit)
+        self.new_window_button = ct.CTkButton(self.main_frame, text="Start", command=self.test)
         self.new_window_button.pack()
 
+        self.close_button = ct.CTkButton(self.main_frame, text="Close", command=self.quit)
+        self.close_button.pack()
 
-    def new_window(self):
-        # calls second window, with inheritance from first window
-        self.newWindow = ct.CTkToplevel()
-        self.call_window =  Wind2(self.newWindow)
-        # hiding Wind1
-        self.root.withdraw()
-        print("A FAIRE")
+    def test(self):
+        self.main_frame.pack_forget()
+
+        self.test_frame = ct.CTkFrame(self, bg_color='white', corner_radius=10, height=self.win_height-20, width=self.win_width-20 )
+        self.test_frame.pack(padx=20, pady=20)
 
 
 
-# Typing test page
-class Wind2(Wind1):
-    def __init__(self, root):
-        # inheritance from first window
-        Wind1.__init__(self, root)
-        
-        
-        # self.root = root
 
-    #     self.win_width = 600
-    #     self.win_height = 400
-    #     # self.frame = ct.CTkFrame(root)
-
-    #     root.geometry("{}x{}+{}+{}".format(self.win_width, self.win_height, 500, 150))
-    #     root.resizable(width=False, height=False)
-
-    #     self.display_widgets()
-
-    # def display_widgets(self):
-    #     self.label = ct.CTkLabel(self.root, text="This is our first GUI!")
-    #     self.label.pack()
-
-    #     self.new_window_button = ct.CTkButton(self.root, text="Start", command=self.root.new_window_button)
-    #     self.close_button.pack()
-
-    #     self.new_window_button = ct.CTkButton(self.root, text="Close", command=self.root.quit)
-    #     self.close_button.pack()
 
 
         
  
 def main():
-    root = ct.CTk()
-    app = Wind1(root)
-    root.mainloop() 
+    Main().mainloop() 
 
 # Runs only if compiled as own script, not as module
 if __name__ == '__main__':
     main()
-
 
 
 
