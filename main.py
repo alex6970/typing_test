@@ -32,7 +32,6 @@ class Main(ct.CTk):
 
 
     def home(self):
-
         self.main_frame = ct.CTkFrame(self, bg_color='white', corner_radius=10)
         self.main_frame.pack()
 
@@ -48,16 +47,32 @@ class Main(ct.CTk):
     def test(self):
         self.main_frame.pack_forget()
 
-        self.test_frame = ct.CTkFrame(self, bg_color='white', corner_radius=10, height=self.win_height-20, width=self.win_width-20 )
+        # Main Frame
+        self.test_frame = ct.CTkFrame(self, corner_radius=10, fg_color='red', height=self.win_height, width=self.win_width )
         self.test_frame.pack(padx=20, pady=20)
 
+        # Infos bar frame
+        self.info_frame = ct.CTkFrame(self.test_frame, fg_color='grey', corner_radius=10, height=55, width=self.winfo_width())
+        self.info_frame.pack()
 
+        mistakes_label = ct.CTkLabel(self.info_frame, textvariable='Hello', font=("Verdana", 9), fg_color=("white", "grey"))
+        mistakes_label.pack() ## TO FIX
 
-
-
-
+        time_label = ct.CTkLabel(self.info_frame, textvariable='lALA', font=("Verdana", 9), fg_color=("white", "grey"))
+        time_label.pack() ## TO FIX
         
- 
+        # Test frame
+        self.main_info_frame = ct.CTkFrame(self.test_frame, fg_color='grey', corner_radius=10, height=250, width=self.winfo_width())
+        self.main_info_frame.pack()
+
+        # Buttons frame
+        self.btns_frame = ct.CTkFrame(self.test_frame, fg_color='grey', corner_radius=10, height=50, width=self.winfo_width())
+        self.btns_frame.pack()
+
+
+
+
+
 def main():
     Main().mainloop() 
 
@@ -68,6 +83,6 @@ if __name__ == '__main__':
 
 
 # TODO :
-# Continue GUI => 3 Frames + refaire page 1 widgets espacés
+# Continue GUI => 3 Frames + FIX FRAME GESTION
 
 
