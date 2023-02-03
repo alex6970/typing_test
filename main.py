@@ -47,27 +47,30 @@ class Main(ct.CTk):
     def test(self):
         self.main_frame.pack_forget()
 
-        # Main Frame
-        self.test_frame = ct.CTkFrame(self, corner_radius=10, fg_color='red', height=self.win_height, width=self.win_width )
-        self.test_frame.pack(padx=20, pady=20)
+        # # Main Frame
+        # self.test_frame = ct.CTkFrame(self, corner_radius=10, fg_color='red')
+        # self.test_frame.pack(padx=20, pady=20)
+        
 
         # Infos bar frame
-        self.info_frame = ct.CTkFrame(self.test_frame, fg_color='grey', corner_radius=10, height=55, width=self.winfo_width())
-        self.info_frame.pack()
+        self.info_frame = ct.CTkFrame(self, fg_color='grey',height=50, width=600)
+        self.info_frame.pack(padx=20, pady=(20,2))
+        self.info_frame.pack_propagate(0) # keep frame from shrinking to fit widget sizes
 
-        mistakes_label = ct.CTkLabel(self.info_frame, textvariable='Hello', font=("Verdana", 9), fg_color=("white", "grey"))
-        mistakes_label.pack() ## TO FIX
+        time_label = ct.CTkLabel(self.info_frame, text='Time left :')
+        time_label.pack(side=RIGHT, padx=(0,20)) 
 
-        time_label = ct.CTkLabel(self.info_frame, textvariable='lALA', font=("Verdana", 9), fg_color=("white", "grey"))
-        time_label.pack() ## TO FIX
+        mistakes_label = ct.CTkLabel(self.info_frame, text='Mistakes :')
+        mistakes_label.pack(side=LEFT, padx=(10,0)) 
+
         
         # Test frame
-        self.main_info_frame = ct.CTkFrame(self.test_frame, fg_color='grey', corner_radius=10, height=250, width=self.winfo_width())
-        self.main_info_frame.pack()
+        self.main_info_frame = ct.CTkFrame(self, fg_color='grey',height=250, width=600)
+        self.main_info_frame.pack(padx=20,pady=0)
 
         # Buttons frame
-        self.btns_frame = ct.CTkFrame(self.test_frame, fg_color='grey', corner_radius=10, height=50, width=self.winfo_width())
-        self.btns_frame.pack()
+        self.btns_frame = ct.CTkFrame(self, fg_color='grey',height=50, width=600)
+        self.btns_frame.pack(padx=20, pady=(2,20))
 
 
 
